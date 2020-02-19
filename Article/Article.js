@@ -113,46 +113,8 @@ const data = [
 
 */
 
-// function createArticle(data) {
-//   const articleCard = document.createElement("div");
-//   const titleText = document.createElement("h2");
-//   const articleDate = document.createElement("p");
-//   const paragraphOne = document.createElement("p");
-//   const paragraphTwo = document.createElement("p");
-//   const paragraphThree = document.createElement("p");
-//   const button = document.createElement("span");
-
-//   articleCard.appendChild(titleText);
-//   articleCard.appendChild(articleDate);
-//   articleCard.appendChild(paragraphOne);
-//   articleCard.appendChild(paragraphTwo);
-//   articleCard.appendChild(paragraphThree);
-//   articleCard.appendChild(button);
-
-//   articleCard.classList.add("article");
-//   articleDate.classList.add("date");
-//   button.classList.add("expandButton");
-
-//   articleTitle.textContent = data.title;
-//   articleDate.textContent = data.date;
-//   paragraphOne.textContent = data.firstParagraph;
-//   paragraphTwo.textContent = data.secondParagraph;
-//   paragraphThree.textContent = data.thirdParagraph;
-//   button.textContent = "Expand";
-
-//   button.addEventListener("click", e =>
-//     articleCard.classList.toggle("article-open")
-//   );
-
-//   return articleCard;
-// }
-
-// const menuCard = document.querySelector(".articles");
-
-// data.forEach(i => menuCard.append(createArticle(i)));
-
 function createArticle(data) {
-  const newsArticle = document.createElement("div");
+  const articleCard = document.createElement("div");
   const articleTitle = document.createElement("h2");
   const articleDate = document.createElement("p");
   const paragraphOne = document.createElement("p");
@@ -160,39 +122,33 @@ function createArticle(data) {
   const paragraphThree = document.createElement("p");
   const toggleButton = document.createElement("span");
 
-  // appending
+  articleCard.append(articleTitle);
+  articleCard.append(articleDate);
+  articleCard.append(paragraphOne);
+  articleCard.append(paragraphTwo);
+  articleCard.append(paragraphThree);
+  articleCard.append(toggleButton);
 
-  newsArticle.append(articleTitle);
-  newsArticle.append(articleDate);
-  newsArticle.append(paragraphOne);
-  newsArticle.append(paragraphTwo);
-  newsArticle.append(paragraphThree);
-  newsArticle.append(toggleButton);
-
-  // add classes to elements
-
-  newsArticle.classList.add("article");
+  articleCard.classList.add("article");
   articleDate.classList.add("date");
   toggleButton.classList.add("expandButton");
-
-  // text
 
   articleTitle.textContent = data.title;
   articleDate.textContent = data.date;
   paragraphOne.textContent = data.firstParagraph;
   paragraphTwo.textContent = data.secondParagraph;
   paragraphThree.textContent = data.thirdParagraph;
-  toggleButton.textContent = "EXPAND";
-
-  // functionality
+  toggleButton.textContent = "Expand";
 
   toggleButton.addEventListener("click", e =>
-    newsArticle.classList.toggle("article-open")
+    articleCard.classList.toggle("article-open")
   );
 
-  return newsArticle;
+  return articleCard;
 }
 
-const menuCard = document.querySelector(".articles");
+const wholeArticle = document.querySelector(".articles");
 
-data.forEach(i => menuCard.append(createArticle(i)));
+data.forEach(function(item) {
+  wholeArticle.append(createArticle(item));
+});
